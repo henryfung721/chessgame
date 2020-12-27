@@ -7,7 +7,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:251214827794:android:61610d4f63729f4525e3cb",
+        "mobilesdk_app_id": "1:251214827794:android:ec672ef77d54b83925e3cb",
         "android_client_info": {
           "package_name": "com.example.chessgame"
         }
