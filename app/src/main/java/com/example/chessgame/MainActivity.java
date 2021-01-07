@@ -68,9 +68,7 @@ public class MainActivity  extends AppCompatActivity  {
                 startActivity(intent2);
                 break;
             case R.id.playoffline:
-                Intent intent3 = new Intent(MainActivity.this,offline2player.class);
-                startActivity(intent3);
-                break;
+
 
         }
     }
