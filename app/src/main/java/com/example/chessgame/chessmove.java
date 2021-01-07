@@ -7,18 +7,35 @@ import java.util.ArrayList;
 public class chessmove {
        static chessboard chessboardclass = new chessboard();
       public static ArrayList<String> validmove = new ArrayList<String>();
+     static int player1 =1;
+     static int player2 =2;
+     static int noone =0;
       static int mymove =1;
-      static int empty =0;
       static int opponentmove =2;
       static int canmove =3;
+     static String empty="empty";
+     static String Pawn ="Pawn";
+     static String Rook ="Rook";
+     static String Knight ="Knight";
+     static String Bishop ="Bishop";
+     static String Queen ="Queen";
+     static String King ="King";
+     static boolean whitecastling=false;
+     static boolean blackcastling=false;
 
-    public void bishopmove(int x,int y) {
+      public static String [][] board ; // to store the piece
+      public static int[][] checkplayer ; //to check who owned the pieces ******* <only final changes>
+    static int chessboardxvalue = 8;
+    static int chessboardyvalue = 8;
+
+    public int[][] bishopmove(int x,int y,String [][] getboard , int[][] getcheckplayer ) {
+        createarraylist(getboard,getcheckplayer);
         changeopponent(x,y);
-        int  columnex,columney;
+        int columnex,columney;
         for(columnex=x+1,columney=y+1;columnex<=7&&columney<=7;columnex++,columney++) {
-                if (chessboardclass.checkplayer[columnex][columney] == chessboardclass.noone) {
+                if (checkplayer[columnex][columney] == noone) {
                     addpossiblemoves(columnex,columney);
-                } else if (chessboardclass.checkplayer[columnex][columney] == opponentmove) {
+                } else if (checkplayer[columnex][columney] == opponentmove) {
                     addpossiblemoves(columnex,columney);
                     break;
                 } else {
@@ -26,47 +43,45 @@ public class chessmove {
                 }
         }
         for(columnex=x+1,columney=y-1;columnex<=7&&columney>=0;columnex++,columney--) {
-
-                if (chessboardclass.checkplayer[columnex][columney] == chessboardclass.noone) {
+                if (checkplayer[columnex][columney] == noone) {
                     addpossiblemoves(columnex,columney);
-                } else if (chessboardclass.checkplayer[columnex][columney] == opponentmove) {
+                } else if (checkplayer[columnex][columney] == opponentmove) {
                     addpossiblemoves(columnex,columney);
                     break;
                 } else {
                     break;
                 }
-
         }
         for(columnex=x-1,columney=y+1;columnex>=0&&columney<=7;columnex--,columney++) {
-
-                if (chessboardclass.checkplayer[columnex][columney] == chessboardclass.noone) {
+                if (checkplayer[columnex][columney] == noone) {
                     addpossiblemoves(columnex,columney);
-                } else if (chessboardclass.checkplayer[columnex][columney] == opponentmove) {
+                } else if (checkplayer[columnex][columney] == opponentmove) {
                     addpossiblemoves(columnex,columney);
                     break;
                 } else {
                     break;
                 }
-
         }
         for(columnex=x-1,columney=y-1;columnex>=0&&columney>=0;columnex--,columney--) {
-
-                if (chessboardclass.checkplayer[columnex][columney] == chessboardclass.noone) {
+                if (checkplayer[columnex][columney] == noone) {
                     addpossiblemoves(columnex,columney);
-                } else if (chessboardclass.checkplayer[columnex][columney] == opponentmove) {
+                } else if (checkplayer[columnex][columney] == opponentmove) {
                     addpossiblemoves(columnex,columney);
                     break;
                 } else {
                     break;
                 }
         }
+        putarraydatatobaord();
+        return checkplayer;
     }
-    public void queenmove(int x,int y) {
+    public int[][] queenmove(int x,int y,String [][] getboard , int[][] getcheckplayer ) {
+        createarraylist(getboard,getcheckplayer);
         changeopponent(x,y);
         for(int columnex=x+1;columnex<=7;columnex++) {
-            if(chessboardclass.checkplayer[columnex][y]==chessboardclass.noone){
+            if(checkplayer[columnex][y]==noone){
                 addpossiblemoves(columnex,y);
-            } else if (chessboardclass.checkplayer[columnex][y]==opponentmove) {
+            } else if (checkplayer[columnex][y]==opponentmove) {
                 addpossiblemoves(columnex,y);
                 break;
             } else{
@@ -74,9 +89,9 @@ public class chessmove {
             }
         }
         for(int columnex=x-1;columnex>=0;columnex--) {
-            if(chessboardclass.checkplayer[columnex][y]==chessboardclass.noone){
+            if(checkplayer[columnex][y]==noone){
                 addpossiblemoves(columnex,y);
-            } else if (chessboardclass.checkplayer[columnex][y]==opponentmove) {
+            } else if (checkplayer[columnex][y]==opponentmove) {
                 addpossiblemoves(columnex,y);
                 break;
             } else{
@@ -84,9 +99,9 @@ public class chessmove {
             }
         }
         for(int columney=y+1;columney<=7;columney++) {
-            if(chessboardclass.checkplayer[x][columney]==chessboardclass.noone){
+            if(checkplayer[x][columney]==noone){
                 addpossiblemoves(x,columney);
-            } else if (chessboardclass.checkplayer[x][columney]==opponentmove) {
+            } else if (checkplayer[x][columney]==opponentmove) {
                 addpossiblemoves(x,columney);
                 break;
             } else{
@@ -94,9 +109,9 @@ public class chessmove {
             }
         }
         for(int columney=y-1;columney>=0;columney--) {
-            if(chessboardclass.checkplayer[x][columney]==chessboardclass.noone){
+            if(checkplayer[x][columney]==noone){
                 addpossiblemoves(x,columney);
-            } else if (chessboardclass.checkplayer[x][columney]==opponentmove) {
+            } else if (checkplayer[x][columney]==opponentmove) {
                 addpossiblemoves(x,columney);
                 break;
             } else{
@@ -104,9 +119,9 @@ public class chessmove {
             }
         }
         for(int columnex=x+1,columney=y+1;columnex<=7&&columney<=7;columnex++,columney++) {
-            if (chessboardclass.checkplayer[columnex][columney] == chessboardclass.noone) {
+            if (checkplayer[columnex][columney] == noone) {
                 addpossiblemoves(columnex,columney);
-            } else if (chessboardclass.checkplayer[columnex][columney] == opponentmove) {
+            } else if (checkplayer[columnex][columney] == opponentmove) {
                 addpossiblemoves(columnex,columney);
                 break;
             } else {
@@ -114,100 +129,102 @@ public class chessmove {
             }
         }
         for(int columnex=x+1,columney=y-1;columnex<=7&&columney>=0;columnex++,columney--) {
-            if (chessboardclass.checkplayer[columnex][columney] == chessboardclass.noone) {
+            if (checkplayer[columnex][columney] == noone) {
                 addpossiblemoves(columnex,columney);
-            } else if (chessboardclass.checkplayer[columnex][columney] == opponentmove) {
+            } else if (checkplayer[columnex][columney] == opponentmove) {
                 addpossiblemoves(columnex,columney);
                 break;
             } else {
                 break;
             }
-
         }
         for(int columnex=x-1,columney=y+1;columnex>=0&&columney<=7;columnex--,columney++) {
-
-            if (chessboardclass.checkplayer[columnex][columney] == chessboardclass.noone) {
+            if (checkplayer[columnex][columney] == noone) {
                 addpossiblemoves(columnex,columney);
-            } else if (chessboardclass.checkplayer[columnex][columney] == opponentmove) {
+            } else if (checkplayer[columnex][columney] == opponentmove) {
                 addpossiblemoves(columnex,columney);
                 break;
             } else {
                 break;
             }
-
         }
         for(int columnex=x-1,columney=y-1;columnex>=0&&columney>=0;columnex--,columney--) {
-
-            if (chessboardclass.checkplayer[columnex][columney] == chessboardclass.noone) {
+            if (checkplayer[columnex][columney] == noone) {
                 addpossiblemoves(columnex,columney);
-            } else if (chessboardclass.checkplayer[columnex][columney] == opponentmove) {
+            } else if (checkplayer[columnex][columney] == opponentmove) {
                 addpossiblemoves(columnex,columney);
                 break;
             } else {
                 break;
             }
         }
+        putarraydatatobaord();
+        return checkplayer;
     }
-    public void pawnmove(int x,int y) {
+    public int[][] pawnmove(int x,int y,String [][] getboard , int[][] getcheckplayer ) {
+        createarraylist(getboard,getcheckplayer);
              changeopponent(x,y);
-            if (chessboardclass.checkplayer[x][y] == chessboardclass.player1) {
+            if (checkplayer[x][y] == player1) {
                 //the chess is opponent's side
                 if (x == 1) {
                     //to check if the pawn are already moved
-                    if(chessboardclass.checkplayer[x+1][y]==chessboardclass.noone) {
+                    if(checkplayer[x+1][y]==noone) {
                         addpossiblemoves(x+1,y);
-                        if(chessboardclass.checkplayer[x+2][y]==chessboardclass.noone) {
+                        if(checkplayer[x+2][y]==noone) {
                             addpossiblemoves(x+2,y);
                         }
                     }
-                }else if(chessboardclass.checkplayer[x+1][y]==chessboardclass.noone) {
+                }else if(checkplayer[x+1][y]==noone) {
                     addpossiblemoves(x+1,y);
                 }
                 if(y!=7){
-                    if(chessboardclass.checkplayer[x+1][y+1]==opponentmove){
+                    if(checkplayer[x+1][y+1]==opponentmove){
                         //pawn eat opponent chess
                         addpossiblemoves(x+1,y+1);
                     }
                 }
                 if(y!=0) {
-                    if (chessboardclass.checkplayer[x + 1][y - 1] == opponentmove) {
+                    if (checkplayer[x + 1][y - 1] == opponentmove) {
                         //pawn eat opponent chess
                         addpossiblemoves(x+1,y-1);
                     }
                 }
-            } else if (chessboardclass.checkplayer[x][y] == chessboardclass.player2) {
+            } else if (checkplayer[x][y] == player2) {
                 //the chess is opponent's side
                 if (x == 6) {
                     //to check if the pawn are already moved
-                     if(chessboardclass.checkplayer[x-1][y]==chessboardclass.noone) {
+                     if(checkplayer[x-1][y]==noone) {
                          addpossiblemoves(x-1,y);
-                         if(chessboardclass.checkplayer[x-2][y]==chessboardclass.noone) {
+                         if(checkplayer[x-2][y]==noone) {
                              addpossiblemoves(x-2,y);
                          }
                      }
-                }else  if(chessboardclass.checkplayer[x-1][y]==chessboardclass.noone) {
+                }else  if(checkplayer[x-1][y]==noone) {
                     addpossiblemoves(x-1,y);
                 }
                 if(y!=7) {
-                    if (chessboardclass.checkplayer[x - 1][y + 1] == opponentmove) {
+                    if (checkplayer[x - 1][y + 1] == opponentmove) {
                         //pawn eat opponent chess
                         addpossiblemoves(x-1,y+1);
                     }
                 }
                 if(y!=0) {
-                    if (chessboardclass.checkplayer[x - 1][y - 1] == opponentmove) {
+                    if (checkplayer[x - 1][y - 1] == opponentmove) {
                         //pawn eat opponent chess
                         addpossiblemoves(x-1,y-1);
                     }
                 }
             }
+        putarraydatatobaord();
+        return checkplayer;
         }
-    public void rookmove(int x,int y) {
+    public int[][] rookmove(int x,int y,String [][] getboard , int[][] getcheckplayer ) {
+        createarraylist(getboard,getcheckplayer);
         changeopponent(x,y);
         for(int columnex=x+1;columnex<=7;columnex++) {
-            if(chessboardclass.checkplayer[columnex][y]==chessboardclass.noone){
+            if(checkplayer[columnex][y]==noone){
                 addpossiblemoves(columnex,y);
-            } else if (chessboardclass.checkplayer[columnex][y]==opponentmove) {
+            } else if (checkplayer[columnex][y]==opponentmove) {
                 addpossiblemoves(columnex,y);
                 break;
             } else{
@@ -215,9 +232,9 @@ public class chessmove {
             }
         }
         for(int columnex=x-1;columnex>=0;columnex--) {
-            if(chessboardclass.checkplayer[columnex][y]==chessboardclass.noone){
+            if(checkplayer[columnex][y]==noone){
                 addpossiblemoves(columnex,y);
-            } else if (chessboardclass.checkplayer[columnex][y]==opponentmove) {
+            } else if (checkplayer[columnex][y]==opponentmove) {
                 addpossiblemoves(columnex,y);
                 break;
             } else{
@@ -225,9 +242,9 @@ public class chessmove {
             }
         }
         for(int columney=y+1;columney<=7;columney++) {
-            if(chessboardclass.checkplayer[x][columney]==chessboardclass.noone){
+            if(checkplayer[x][columney]==noone){
                 addpossiblemoves(x,columney);
-            } else if (chessboardclass.checkplayer[x][columney]==opponentmove) {
+            } else if (checkplayer[x][columney]==opponentmove) {
                 addpossiblemoves(x,columney);
                 break;
             } else{
@@ -235,9 +252,9 @@ public class chessmove {
             }
         }
         for(int columney=y-1;columney>=0;columney--) {
-            if(chessboardclass.checkplayer[x][columney]==chessboardclass.noone){
+            if(checkplayer[x][columney]==noone){
                 addpossiblemoves(x,columney);
-            } else if (chessboardclass.checkplayer[x][columney]==opponentmove) {
+            } else if (checkplayer[x][columney]==opponentmove) {
                 addpossiblemoves(x,columney);
                 break;
             } else{
@@ -245,11 +262,13 @@ public class chessmove {
             }
         }
         castling(x,y);
+        putarraydatatobaord();
+        return checkplayer;
     }
-    public void knightmove(int x,int y) {
+    public int[][] knightmove(int x,int y,String [][] getboard , int[][] getcheckplayer ) {
+        createarraylist(getboard,getcheckplayer);
         for(int x1=0;x1<=7;x1++) {
             for(int y1=0;y1<=7;y1++) {
-
                 if(x1-x==2&&y1-y==1) {
                     String place = Integer.toString(x1)+Integer.toString(y1);
                     validmove.add(place);
@@ -288,8 +307,11 @@ public class chessmove {
             }
         }
         checkvalid(x,y);
+        putarraydatatobaord();
+        return checkplayer;
     }
-    public void kingmove(int x,int y) {
+    public int[][] kingmove(int x,int y,String [][] getboard , int[][] getcheckplayer ) {
+        createarraylist(getboard,getcheckplayer);
         for(int x1=0;x1<=7;x1++) {
             for(int y1=0;y1<=7;y1++) {
                 if(x1-x==1||x-x1==1) {
@@ -312,6 +334,8 @@ public class chessmove {
             }
         }
         checkvalid(x,y);
+        putarraydatatobaord();
+        return checkplayer;
     }
     public void addpossiblemoves(int x ,int y){
         //adding the possible moves to arraylist
@@ -325,7 +349,7 @@ public class chessmove {
             int intdata = Integer.parseInt(data);
             int x1=intdata/10;
             int y1=intdata%10;
-            if(chessboardclass.checkplayer[x][y]==chessboardclass.checkplayer[x1][y1]){
+            if(checkplayer[x][y]==checkplayer[x1][y1]){
                 validmove.remove(i);
                 i=i-1;
             }
@@ -333,13 +357,21 @@ public class chessmove {
     }
     public void changeopponent(int x ,int y){
         //check which player moves
-        if(chessboardclass.checkplayer[x][y]==chessboardclass.player1){
+        if(checkplayer[x][y]==player1){
             mymove =1;
             opponentmove =2;
-        } else if(chessboardclass.checkplayer[x][y]==chessboardclass.player2){
+        } else if(checkplayer[x][y]==player2){
             mymove =2;
             opponentmove =1;
         }
+    }
+    public void createarraylist(String [][] getboard , int[][] getcheckplayer ){
+        board = new String[chessboardxvalue][chessboardyvalue];
+        checkplayer = new int[chessboardxvalue][chessboardyvalue];
+        board=getboard;
+        checkplayer=getcheckplayer;
+        whitecastling=chessboard.whitecastling;
+        blackcastling=chessboard.blackcastling;
     }
     public static void putarraydatatobaord() {
         //read the arraylist
@@ -348,7 +380,7 @@ public class chessmove {
             int intdata = Integer.parseInt(data);
             int x=intdata/10;
             int y=intdata%10;
-            chessboardclass.checkplayerclone[x][y]=canmove;
+            checkplayer[x][y]=canmove;
         }
     }
     public static void clearvalidmovearray() {
@@ -358,43 +390,43 @@ public class chessmove {
     public void castling(int x, int y){
         //castling
         //check which player
-        if(chessboardclass.checkplayer[x][y]==chessboardclass.player1){
+        if(checkplayer[x][y]==player1){
             //check if the king is in the right position
-            if (chessboardclass.checkplayer[x][4] == chessboardclass.player1 && chessboardclass.board[x][4] == chessboardclass.King) {
+            if (checkplayer[x][4] == player1 && board[x][4] == King) {
                 //check if rook is in left hand sided
                 if((x==0&&y==0)) {
                     //check if there are any pieces between king and rook
-                    if(chessboardclass.checkplayer[x][1] == chessboardclass.noone&&chessboardclass.checkplayer[x][2] == chessboardclass.noone&&chessboardclass.checkplayer[x][3] == chessboardclass.noone){
-                        if(chessboardclass.whitecastling==false){
+                    if(checkplayer[x][1] == noone&&checkplayer[x][2] == noone&&checkplayer[x][3] == noone){
+                        if(whitecastling==false){
                             addpossiblemoves(x,4);
                         }
                     }
                 }else
                     //check if rook is in left hand sided
                     if (x==0&&y==7){
-                        if(chessboardclass.checkplayer[x][6] == chessboardclass.noone&&chessboardclass.checkplayer[x][5] == chessboardclass.noone){
-                            if(chessboardclass.whitecastling==false){
+                        if(checkplayer[x][6] == noone&&checkplayer[x][5] == noone){
+                            if(whitecastling==false){
                                 addpossiblemoves(x,4);
                             }
                         }
                     }
             }
-        }else if(chessboardclass.checkplayer[x][y]==chessboardclass.player2){
+        }else if(checkplayer[x][y]==player2){
             //check if the king is in the right position
-            if (chessboardclass.checkplayer[x][4] == chessboardclass.player2 && chessboardclass.board[x][4] == chessboardclass.King) {
+            if (checkplayer[x][4] == player2 && board[x][4] == King) {
                 //check if rook is in left hand sided
                 if((x==7&&y==0)) {
                     //check if there are any pieces between king and rook
-                    if(chessboardclass.checkplayer[x][1] == chessboardclass.noone&&chessboardclass.checkplayer[x][2] == chessboardclass.noone&&chessboardclass.checkplayer[x][3] == chessboardclass.noone){
-                        if(chessboardclass.blackcastling==false){
+                    if(checkplayer[x][1] == noone&&checkplayer[x][2] == noone&&checkplayer[x][3] == noone){
+                        if(blackcastling==false){
                             addpossiblemoves(x,4);
                         }
                     }
                 }else
                     //check if rook is in left hand sided
                     if (x==7&&y==7){
-                        if(chessboardclass.checkplayer[x][6] == chessboardclass.noone&&chessboardclass.checkplayer[x][5] == chessboardclass.noone){
-                            if(chessboardclass.blackcastling==false){
+                        if(checkplayer[x][6] == noone&&checkplayer[x][5] == noone){
+                            if(blackcastling==false){
                                 addpossiblemoves(x,4);
                             }
                         }

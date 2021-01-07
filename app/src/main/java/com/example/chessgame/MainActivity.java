@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 public class MainActivity  extends AppCompatActivity  {
 
 
-    Button vscomputer,online,playerprofile;
+    Button vscomputer,online,playerprofile,playoffline;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     String userid;
@@ -41,7 +41,7 @@ public class MainActivity  extends AppCompatActivity  {
         vscomputer = findViewById(R.id.vscomputer);
         online = findViewById(R.id.online);
         playerprofile = findViewById(R.id.playerprofile);
-
+        playoffline = findViewById(R.id.playoffline);
 
         firebaseAuth= FirebaseAuth.getInstance();//firebase
         firestore=FirebaseFirestore.getInstance();
@@ -66,6 +66,10 @@ public class MainActivity  extends AppCompatActivity  {
             case R.id.playerprofile:
                 Intent intent2 = new Intent(MainActivity.this,useraccount.class);
                 startActivity(intent2);
+                break;
+            case R.id.playoffline:
+                Intent intent3 = new Intent(MainActivity.this,offline2player.class);
+                startActivity(intent3);
                 break;
 
         }
