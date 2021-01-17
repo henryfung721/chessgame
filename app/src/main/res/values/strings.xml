@@ -14,4 +14,8 @@
     <string name="register">register</string>
     <string name="email">email</string>
     <string name="confirmepassword">confirmepassword</string>
+    <string-array name="whoplay">
+        <item>human</item>
+        <item>computer</item>
+    </string-array>
 </resources>

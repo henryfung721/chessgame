@@ -56,11 +56,11 @@ public class MainActivity  extends AppCompatActivity  {
     public void onclick(View v){
         switch (v.getId()) {
             case R.id.vscomputer:
-                Intent intent = new Intent(MainActivity.this,vscomputerchessgame.class);
+                Intent intent = new Intent(MainActivity.this,chesssetting.class);
                 startActivity(intent);
                 break;
             case R.id.online:
-                Intent intent1 = new Intent(MainActivity.this,vscomputerchessgame.class);
+                Intent intent1 = new Intent(MainActivity.this,chesssetting.class);
                 startActivity(intent1);
                 break;
             case R.id.playerprofile:
