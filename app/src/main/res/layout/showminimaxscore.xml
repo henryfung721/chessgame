@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:id="@+id/steps"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text="steps"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/minimaxscore"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_toEndOf="@+id/imagevieweatedpiece"
+            android:layout_toRightOf="@+id/imagevieweatedpiece"
+            android:text="minimaxscore"
+            android:textColor="@android:color/black"
+            android:textSize="11.5sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imagevieweatedpiece"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:layout_toEndOf="@+id/textView1"
+            />
+
+        <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="2dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+        />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imageview"
+            android:text="Line1"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imageview"
+            />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_margin="8dp"
+            android:layout_toEndOf="@+id/imageview"
+            android:text="Line2"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/imageview" />
+
+        <ImageView
+            android:id="@+id/predictedimageview"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp"
+            android:layout_toRightOf="@+id/minimaxscore"
+            android:layout_toEndOf="@+id/minimaxscore"
+            />
+        <ImageView
+            android:id="@+id/predictedimagevieweatedpiece"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp"
+            android:layout_toRightOf="@+id/predictedtextView1"
+            android:layout_toEndOf="@+id/predictedtextView1"
+            />
+        <TextView
+            android:id="@+id/predictedtextView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/predictedimageview"
+            android:text="Line1"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/predictedimageview"
+            />
+        <TextView
+            android:id="@+id/predictedtextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_margin="8dp"
+            android:layout_toEndOf="@+id/predictedimageview"
+            android:text="Line2"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/predictedimageview" />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

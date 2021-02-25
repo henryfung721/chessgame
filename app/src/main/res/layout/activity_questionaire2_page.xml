@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainpage.feedback_page.matching_mode_questionaire">
+
+
+    //page description
+    <TextView
+        android:id="@+id/current_page"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="2/5"
+        android:textSize="40dp"/>
+    <TextView
+        android:id="@+id/current_mode"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/current_page"
+        android:layout_toRightOf="@+id/current_page"
+        android:text="game mode"
+        android:textSize="50dp" />
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/current_page"
+        android:text="please rate for each section"
+        android:textSize="20dp" />
+
+    //1.1
+    <TextView
+        android:id="@+id/Q2.1_question"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/description"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="60dp"
+        android:text="user interface :"
+        android:textSize="25dp"></TextView>
+    <TextView
+        android:id="@+id/Q2.1_description"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/description"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="60dp"
+
+        android:textSize="25dp"></TextView>
+    <SeekBar
+        android:id="@+id/Q2.1_seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Q2.1_question"
+        />
+
+    //1.2
+    <TextView
+        android:id="@+id/Q2.2_question"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/Q2.1_seekBar"
+        android:layout_marginTop="60dp"
+        android:text="basic 1v1 function:"
+        android:textSize="20dp"></TextView>
+    <TextView
+        android:id="@+id/Q2.2_description"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/Q2.1_seekBar"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="60dp"
+        android:textSize="25dp"></TextView>
+    <SeekBar
+        android:id="@+id/Q2.2_seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Q2.2_question"
+        />
+
+    //1.3
+    <TextView
+        android:id="@+id/Q2.3_question"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/Q2.2_seekBar"
+        android:layout_marginTop="60dp"
+        android:text="Storing record :"
+        android:textSize="20dp"></TextView>
+    <TextView
+        android:id="@+id/Q2.3_description"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/Q2.2_seekBar"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="60dp"
+        android:textSize="25dp"></TextView>
+    <SeekBar
+        android:id="@+id/Q2.3_seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Q2.3_question"
+        />
+
+    //next section buttion
+
+    <Button
+        android:id="@+id/next_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginBottom="50dp"
+        android:text="next part" />
+
+    <Button
+        android:id="@+id/cancel_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="50dp"
+        android:layout_toEndOf="@+id/next_button"
+        android:layout_toRightOf="@+id/next_button"
+        android:text="cancel" />
+
+
+</RelativeLayout>

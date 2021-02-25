@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainpage.feedback_page.feedback_section">
+
+
+    //page description
+    <TextView
+        android:id="@+id/current_page"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="4/5"
+        android:textSize="40dp"/>
+    <TextView
+        android:id="@+id/current_mode"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/current_page"
+        android:layout_toRightOf="@+id/current_page"
+        android:text="user feedback"
+        android:textSize="45dp" />
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/current_page"
+        android:text="please type below if you have any feedback"
+        android:textSize="20dp" />
+
+<LinearLayout
+    android:layout_width="500dp"
+    android:layout_height="500dp"
+    android:layout_below="@+id/description"
+    android:orientation="horizontal"
+    android:background="@drawable/box">
+
+    <EditText
+        android:id="@+id/feedback"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="55dp"
+        android:hint="(please type here)"
+        android:layout_marginLeft="40dp"
+        android:textSize="20dp"></EditText>
+
+</LinearLayout>
+
+
+
+
+    //next section buttion
+
+    <Button
+        android:id="@+id/next_button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginBottom="20dp"
+        android:text="next part" />
+
+    <Button
+        android:id="@+id/cancel_button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@+id/next_button"
+        android:layout_toRightOf="@+id/next_button"
+        android:text="cancel" />
+
+
+</RelativeLayout>

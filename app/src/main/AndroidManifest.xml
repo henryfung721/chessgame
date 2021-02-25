@@ -11,18 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".chesssetting"></activity>
-        <activity android:name=".login">
+
+        <activity android:name=".mainpage.matching_mode.chesssetting" />
+        <activity android:name=".loginpage.login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".useraccount" />
-        <activity android:name=".registeraccount" />
-        <activity android:name=".vscomputerchessgame" />
+        <activity android:name=".mainpage.MainActivity" />
+        <activity android:name=".loginpage.registeraccount" />
+        <activity android:name=".mainpage.matching_mode.vscomputerchessgame" />
+        <activity android:name=".mainpage.load_firebase_record.load_record" />
+
+
+
+        <activity android:name=".mainpage.feedback_page.user_login_questionaire"></activity>
+        <activity android:name=".mainpage.feedback_page.matching_mode_questionaire"></activity>
+        <activity android:name=".mainpage.feedback_page.chess_engine_questionaire"></activity>
+        <activity android:name=".mainpage.feedback_page.feedback_section"></activity>
+        <activity android:name=".mainpage.feedback_page.suggest_function_section"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

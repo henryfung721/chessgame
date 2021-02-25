@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "251214827794",
+    "firebase_url": "https://chessgame-2e12f-default-rtdb.firebaseio.com",
     "project_id": "chessgame-2e12f",
     "storage_bucket": "chessgame-2e12f.appspot.com"
   },
